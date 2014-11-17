@@ -40,6 +40,8 @@ public class Listener extends hudson.model.listeners.RunListener<Run> {
     String sha = null;
     try { sha = run.getEnvironment(listener).get("GIT_COMMIT"); } catch (Exception e) {}
     buildStatus.put("sha", sha);
+    JSONObject payload = new JSONObject();
+    payload.put("build", buildStatus);
 
     // Send notification
     try {
@@ -51,7 +53,7 @@ public class Listener extends hudson.model.listeners.RunListener<Run> {
 
       conn.setDoOutput(true);
       OutputStream output = conn.getOutputStream();
-      output.write(buildStatus.toString().getBytes("UTF-8"));
+      output.write(payload.toString().getBytes("UTF-8"));
       output.close();
 
       int code = conn.getResponseCode();
