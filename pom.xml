@@ -33,4 +33,19 @@
       <url>http://repo.jenkins-ci.org/public/</url>
     </pluginRepository>
   </pluginRepositories>
+
+  <scm>
+    <connection>scm:git:ssh://github.com/jenkinsci/gitcolony-plugin.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/jenkinsci/gitcolony-plugin.git</developerConnection>
+    <url>https://github.com/jenkinsci/gitcolony-plugin</url>
+  </scm>
+  
+  <developers>
+    <developer>
+      <id>mfocaraccio</id>
+      <name>Tech Guy</name>
+      <email>mariano@gitcolony.com</email>
+    </developer>
+  </developers>
+
 </project>
