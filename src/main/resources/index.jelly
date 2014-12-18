@@ -1,0 +1,4 @@
+<?jelly escape-by-default='true'?>
+<div>
+This plugin updates live branch build status in <a href="https://www.gitcolony.com/" target="_blank">Gitcolony</a>.
+</div>
