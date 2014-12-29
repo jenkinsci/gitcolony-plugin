@@ -9,7 +9,7 @@
   </parent>
   <groupId>com.gitcolony.jenkins</groupId>
   <artifactId>gitcolony-plugin</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
   <packaging>hpi</packaging>
   <url>https://wiki.jenkins-ci.org/display/JENKINS/Gitcolony+Plugin</url>
 
@@ -42,7 +42,8 @@
    <connection>scm:git:ssh://github.com/jenkinsci/gitcolony-plugin.git</connection>
    <developerConnection>scm:git:ssh://git@github.com/jenkinsci/gitcolony-plugin.git</developerConnection>
    <url>https://github.com/jenkinsci/gitcolony-plugin</url>
- </scm>
+   <tag>gitcolony-plugin-1.1</tag>
+  </scm>
   
   <developers>
     <developer>
