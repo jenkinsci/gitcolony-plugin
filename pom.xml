@@ -11,9 +11,11 @@
   <artifactId>gitcolony-plugin</artifactId>
   <version>1.1-SNAPSHOT</version>
   <packaging>hpi</packaging>
+  <url>https://wiki.jenkins-ci.org/display/JENKINS/Gitcolony+Plugin</url>
+
 
   <name>Gitcolony Build Notification plugin</name>
-  <description>Updated live branch build status in Gitcolony</description>
+  <description>Updated live branches and pull requests build status into Gitcolony</description>
   <licenses>
     <license>
       <name>MIT License</name>
