@@ -16,8 +16,6 @@ import java.util.Map;
 @hudson.Extension
 @SuppressWarnings("rawtypes")
 public class Listener extends hudson.model.listeners.RunListener<Run> {
-//public class Listener extends hudson.tasks. {
-
   public Listener() {
     super(Run.class);
   }
