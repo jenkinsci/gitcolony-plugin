@@ -5,8 +5,12 @@
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
     <!-- which version of Jenkins is this plugin built against? Users must have at least this Jenkins version to use this plugin. -->
-    <version>1.532.3</version>
+    <version>3.4</version>
   </parent>
+  <properties>
+    <jenkins.version>2.89.4</jenkins.version>
+    <java.level>8</java.level>
+  </properties>
   <groupId>com.gitcolony.jenkins</groupId>
   <artifactId>gitcolony-plugin</artifactId>
   <version>1.2-SNAPSHOT</version>

@@ -16,6 +16,8 @@ import java.util.Map;
 @hudson.Extension
 @SuppressWarnings("rawtypes")
 public class Listener extends hudson.model.listeners.RunListener<Run> {
+//public class Listener extends hudson.tasks. {
+
   public Listener() {
     super(Run.class);
   }
@@ -38,6 +40,8 @@ public class Listener extends hudson.model.listeners.RunListener<Run> {
 
     String urlText = expandVariables(property.getUrl(), run.getEnvironment(listener));
 
+    if (urlText.isEmpty()) return;
+
     URL url;
     try {
       url = new URL(urlText);
@@ -53,7 +57,7 @@ public class Listener extends hudson.model.listeners.RunListener<Run> {
     Result  result = run.getResult();
     buildStatus.put("status", result != null ? result.toString() : "UNKNOWN");
     String sha = null;
-    try { sha = run.getEnvironment(listener).get("GIT_COMMIT"); } catch (Exception e) {}
+    try { sha = run.getEnvironment(listener).get("GIT_COMMIT"); } catch (Exception e) { throw e; }
     buildStatus.put("sha", sha);
     JSONObject payload = new JSONObject();
     payload.put("build", buildStatus);
@@ -74,9 +78,8 @@ public class Listener extends hudson.model.listeners.RunListener<Run> {
     listener.getLogger().println(String.format("Gitcolony notification sent: %d", code));
   }
 
-
   protected String expandVariables(String urlText, EnvVars env) {
-    String ret = null;
+    StringBuilder ret = new StringBuilder();
 
     for (String part : urlText.split("/")) {
       if (part.startsWith("$$")) {
@@ -86,9 +89,9 @@ public class Listener extends hudson.model.listeners.RunListener<Run> {
         part = env.get(name.substring(1), null);
         if (part == null) throw new IllegalArgumentException(String.format("Invalid url parameter %s", name));
       }
-      ret = (ret == null) ? part : (ret+"/"+part);
+      if(ret.toString().isEmpty()) ret = new StringBuilder(part);
+      else ret.append("/").append(part);
     }
-
-    return ret;
-  }
+    return ret.toString();
+}
 }

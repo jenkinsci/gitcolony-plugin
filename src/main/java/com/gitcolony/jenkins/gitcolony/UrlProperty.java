@@ -9,6 +9,8 @@ import net.sf.json.JSONObject;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 
+import javax.annotation.Nonnull;
+
 public final class UrlProperty extends JobProperty<AbstractProject<?, ?>> {
   private String url;
 
@@ -28,7 +30,7 @@ public final class UrlProperty extends JobProperty<AbstractProject<?, ?>> {
     public String getDisplayName() { return "Gitcolony LiveBranch URL"; }
 
     @Override
-    public JobProperty<?> newInstance(StaplerRequest req, JSONObject formData) throws FormException {
+    public JobProperty<?> newInstance(@Nonnull StaplerRequest req, JSONObject formData) throws FormException {
       UrlProperty tpp = req.bindJSON(UrlProperty.class, formData);
       return (tpp == null || tpp.url == null) ? null : tpp;
     }
